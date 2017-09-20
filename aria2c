@@ -1,0 +1,75 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Author: MoYoo
+# Blog: https://www.moyoo.net   
+# Github: https://www.github/ticifer/Linux
+# Required-Start:    $remote_fs $network
+# Required-Stop:     $remote_fs $network
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Aria2 Downloader
+### END INIT INFO
+
+prog="aria2c"
+ARIA2_CONF_FILE="/etc/aria2/aria2.conf"
+
+start() {
+    echo -n $"Starting $prog: "
+    $prog --conf-path=$ARIA2_CONF_FILE -D
+	ps -lef |pgrep $prog &> /dev/null
+    if [ $? -eq 0 ]
+    then 
+        echo "$prog Has Started. Aria2已启动..."
+    else
+        echo "$prog Not Started. Aria2未启动..."
+    fi
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+	ps aux|grep $prog|grep -Ev 'grep|service|init.d'|awk '{print $2}'|xargs kill -9
+	if [ $? -eq 0 ]
+    then 
+        echo "$prog Is Stopped. Aria2已停止..."
+    else
+        echo "$prog Not Stopped. Aria2未停止..."
+    fi
+}
+
+restart() {
+    stop
+	sleep 1
+    start
+}
+status() {
+        ps -lef |pgrep $prog &> /dev/null
+        if [ $? -eq 0 ]
+        then 
+            echo "$prog Is Running. Aria2已运行..."
+        else
+            echo "$prog Not Running. Aria2未运行..."
+        fi
+}
+
+case "$1" in
+start)
+	start
+;;
+stop)
+	stop
+;;
+restart)
+	restart
+;;
+status)
+	status
+;;
+*)
+    echo 'Usage:' `basename $0` '[option]'
+    echo 'Available option:'
+    for option in start stop restart status
+    do
+    echo '  -' $option
+    done
+;;
+esac
