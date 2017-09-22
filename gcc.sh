@@ -1,3 +1,12 @@
+#!/bin/sh
+#=============================================#
+#	System Required: CentOS                   #
+#	Description: Aria2                        #
+#	Version: 1.0                              #
+#	Author: MoYoo                             #
+#	Blog: https://www.moyoo.net               #
+#   Github: https://www.github/ticifer/Linux  #
+#=============================================#
 #sort版本比较
 function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -rV | head -n 1)" == "$1"; }
 function version_lt() { test "$(echo "$@" | tr " " "\n" | sort -rV | head -n 1)" != "$1"; }
