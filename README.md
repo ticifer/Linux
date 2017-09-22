@@ -11,10 +11,6 @@ File storage directory<br>
 </pre>
 Support Start、Stop、Status、Restart<br>
 支持启动、停止、状态、重启<br>
-Example:<br>
-<pre>
-service aria2c start
-</pre>
 Usage<br>
 用法：<br>
 <pre>
@@ -25,8 +21,8 @@ Please Execute Before Use：<br>
 <pre>
 chmod +x aria2c
 </pre>
-<br>
-## gcc<br>
+
+## gcc.sh<br>
 gcc update auto install bash<br>
 gcc升级自动编译安装脚本<br>
 Please Execute Before Use：<br>
@@ -38,4 +34,18 @@ Usage<br>
 用法：<br>
 <pre>
 ./gcc.sh
+</pre>
+
+## Aria.sh<br>
+Aria2 Install Bash<br>
+Aria2 安装脚本<br>
+Please Execute Before Use：<br>
+使用前请执行：<br>
+<pre>
+chmod +x gcc.sh
+</pre>
+Usage<br>
+用法：<br>
+<pre>
+./Aria.sh
 </pre>
