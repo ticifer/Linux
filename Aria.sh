@@ -7,6 +7,10 @@
 #	Blog: https://www.moyoo.net               #
 #   Github: https://www.github/ticifer/Linux  #
 #=============================================#
+#安装组件
+yum -y install wget screen curl python lrzsz
+yum install epel-release
+yum clean all
 #获取当前gcc版本号
 gcc_new=`gcc --version | grep gcc | awk -F" " '{print $3}'`
 #定义最低要求gcc版本号
@@ -19,11 +23,10 @@ then
    echo "当前gcc版本$gcc_new >= 最低要求gcc版本$gcc_old"
    echo "3秒后开始安装Aria2"
    sleep 3
-install(){
 #变量
 aria2c="/usr/local/bin/aria2c"
 #安装依赖
-yum install -y bison libssh2-devel expat-devel gmp-devel nettle-devel libuv-devel libssh2-devel zlib-devel c-ares-devel cppunit-devel gnutls-devel libgcrypt-devel libxml2-devel sqlite-devel gettext lzma-devel xz-devel gperftools gperftools-devel gperftools-libs jemalloc-devel libuv libuv-devel jemalloc libxml2-dev libgcrypt-dev libssl-dev bzip2
+yum install -y bison libssh2-devel gcc-c++ expat-devel gmp-devel nettle-devel libuv-devel libssh2-devel zlib-devel c-ares-devel cppunit-devel gnutls-devel libgcrypt-devel libxml2-devel sqlite-devel gettext lzma-devel xz-devel gperftools gperftools-devel gperftools-libs jemalloc-devel libuv libuv-devel jemalloc libxml2-dev libgcrypt-dev libssl-dev bzip2
 #下载Aria2包
 wget --no-check-certificate N "https://github.com/aria2/aria2/releases/download/release-1.32.0/aria2-1.32.0.tar.gz"
 #解压Aria2
@@ -38,9 +41,12 @@ check_installed_status(){
 	[[ ! -e ${aria2c} ]] && echo -e "${Error} Aria2 没有安装，请检查 !" && exit 1
 }
 #创建Aria2配置目录
-if [ ! -d "/etc/aria2" ]; then
-	mkdir -p /etc/aria2
-fi
+	if [ ! -d "/etc/aria2" ]
+		then
+		mkdir -p /etc/aria2
+	else
+		echo "目录已存在"
+	fi
 #创建Aria2配置文件
 echo "#aria2 config
 dir=/data/wwwroot/down/data
@@ -171,9 +177,9 @@ service aria2c restart
 echo "Aria2安装配置完成.并成功启动运行!"}
 else
 	if version_lt $gcc_new $gcc_old
-then
-	echo "当前gcc版本$gcc_new < gcc最低要求$gcc_old"
-	echo "请将gcc升级至最低4.8.3再运行本脚本"
-	exit 1
-fi}
-done
+		then
+		echo "当前gcc版本$gcc_new < gcc最低要求$gcc_old"
+		echo "请将gcc升级至最低4.8.3再运行本脚本"
+		exit 1
+    fi
+fi
