@@ -64,4 +64,6 @@ Usage<br>
 ./nginx-quic.sh
 </pre>
 注意事项：<br>
-运行脚本前，自行修改资源路径及nginx安装路径
+Precautions:<br>
+运行脚本前，自行修改资源路径及nginx安装路径<br>
+Before running the script, modify the resource path and nginx installation path by yourself
