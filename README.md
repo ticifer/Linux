@@ -49,3 +49,19 @@ Usage<br>
 <pre>
 ./Aria.sh
 </pre>
+
+## nginx_quic.sh<br>
+Nginx Quic Automatic compilation and installation<br>
+Nginx Quic 一键安装脚本<br>
+Please Execute Before Use：<br>
+使用前请执行：<br>
+<pre>
+chmod +x nginx_quic.sh
+</pre>
+Usage<br>
+用法：<br>
+<pre>
+./nginx-quic.sh
+</pre>
+注意事项：<br>
+运行脚本前，自行修改资源路径及nginx安装路径
