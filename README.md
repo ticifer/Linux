@@ -71,7 +71,7 @@ Before running the script, modify the resource path and nginx installation path 
 # mtr_trace
 检测VPS回程国内三网路由，用法：
 <pre>
-curl https://raw.githubusercontent.com/ticifer/Linux/main/mtr_trace.sh|bash
+curl https://raw.githubusercontent.com/ticifer/Linux/master/mtr_trace.sh|bash
 </pre>
 支持的线路为：电信CN2 GT，电信CN2 GIA，联通169，电信163，联通9929，联通4837，移动CMI
 <pre>
@@ -140,7 +140,7 @@ mtr -c 100 --report 221.179.155.161
 mtr -c 100 --report 218.201.4.3
 </pre>
 
-## Superspeed.sh
+## 3net.sh
 - Description: Test your server's network with Speedtest to China
  
 <pre>
